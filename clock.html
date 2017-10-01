@@ -1,0 +1,54 @@
+<html>
+
+<head>
+    <link rel="stylesheet" type="text/css" href="clock.css">
+</head>
+
+<body>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.17/d3.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.js"></script>
+    <script language="javascript" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/flot/0.8.3//jquery.flot.js"></script>
+    <script language="javascript" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/flot/0.8.3/jquery.flot.time.js"></script>
+    <script language="javascript" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/flot/0.8.3/jquery.flot.canvas.js"></script>
+    <script language="javascript" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.18.1/moment.js"></script>
+    <script language="javascript" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.18.1/locale/en-au.js"></script>
+    <script type="text/javascript" src="graphite-data.js"></script>
+    <script type="text/javascript" src="radar-display.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.simpleWeather/3.1.0/jquery.simpleWeather.min.js"></script>
+    <div id="clock" class="box clock" align="center">&nbsp</div>
+    <div id="radar" class="box radar">
+        <div class="wrapper">
+        <!-- <img class="radar-img" id="radar-legend" src="http://www.bom.gov.au/products/radar_transparencies/IDR.legend.0.png" /> -->
+        <img class="radar-img" id="radar-background" src="http://www.bom.gov.au/products/radar_transparencies/IDR714.background.png" />
+        <!-- <img class="radar-img" id="radar-topography" src="http://www.bom.gov.au/products/radar_transparencies/IDR714.topography.png" /> -->
+        <img class="radar-img" id="radar-locations" src="http://www.bom.gov.au/products/radar_transparencies/IDR714.locations.png" />
+        <img id="radar-top" />
+        </div>
+    </div>
+    <div class="box other"></div>
+    <div id="weather" class="box weather">&nbsp</div>
+    <!-- <div class="box rss"></div> -->
+    <div id="graph" class="box graph">&nbsp</div>
+    <div class="box player"><span id="video-file"></span><span id="video-name"></span>
+        <br /><span id="video-artist"></span>
+        <br />
+    </div>
+    <script src="clock.js"></script>
+    <script src="weather-display.js"></script>
+</body>
+<footer>
+    <script src="kodi-websocket.js"></script>
+    <script type="text/javascript">
+    $(document).ready(function() {
+        getWeather(); //Get the initial weather.
+        setInterval(getWeather, 600000); //Update the weather every 10 minutes.
+        update_radar_image_sources();
+        swap_radar_image();
+        //console.log(radar_images)
+
+
+    });
+    </script>
+</footer>
+
+</html>
